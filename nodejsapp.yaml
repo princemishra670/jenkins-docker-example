@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: azure-vote-back
+  name: azure-vote-back1
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: azure-vote-back
+      app: azure-vote-back1
   template:
     metadata:
       labels:
-        app: azure-vote-back
+        app: azure-vote-back1
     spec:
       nodeSelector:
         "kubernetes.io/os": linux
       containers:
-      - name: azure-vote-back
+      - name: azure-vote-back1
         image: prince670/my-app-1.0:latest
         env:
         - name: ALLOW_EMPTY_PASSWORD
@@ -34,31 +34,31 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: azure-vote-back
+  name: azure-vote-back1
 spec:
   ports:
   - port: 6379
   selector:
-    app: azure-vote-back
+    app: azure-vote-back1
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: azure-vote-front
+  name: azure-vote-front1
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: azure-vote-front
+      app: azure-vote-front1
   template:
     metadata:
       labels:
-        app: azure-vote-front
+        app: azure-vote-front1
     spec:
       nodeSelector:
         "kubernetes.io/os": linux
       containers:
-      - name: azure-vote-front
+      - name: azure-vote-front1
         image: prince670/my-app-1.0:latest
         resources:
           requests:
@@ -71,15 +71,15 @@ spec:
         - containerPort: 80
         env:
         - name: REDIS
-          value: "azure-vote-back"
+          value: "azure-vote-back1"
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: azure-vote-front
+  name: azure-vote-front1
 spec:
   type: LoadBalancer
   ports:
   - port: 80
   selector:
-    app: azure-vote-front
+    app: azure-vote-front1
