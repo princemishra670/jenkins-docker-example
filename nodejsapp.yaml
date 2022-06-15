@@ -16,7 +16,7 @@ spec:
         "kubernetes.io/os": linux
       containers:
       - name: azure-vote-back1
-        image: prince670/my-app-1.0:latest
+        image: myregistrey:latest
         env:
         - name: ALLOW_EMPTY_PASSWORD
           value: "yes"
@@ -59,7 +59,7 @@ spec:
         "kubernetes.io/os": linux
       containers:
       - name: azure-vote-front1
-        image: prince670/my-app-1.0:latest
+        image: myregistrey:latest
         resources:
           requests:
             cpu: 100m
